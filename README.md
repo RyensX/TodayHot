@@ -19,8 +19,9 @@
 
 ## 运行截图
 
-![知乎综合热榜](doc/screenshot/知乎综合热榜.jpg) ![百度风云榜](doc/screenshot/百度风云榜.jpg)
-![微博热搜榜](doc/screenshot/微博热搜榜.jpg) 
+<img src="doc/screenshot/知乎综合热榜.jpg" title="" width="180">
+<img src="doc/screenshot/百度风云榜.jpg" width="180">
+<img src="doc/screenshot/微博热搜榜.jpg" width="180">
 
 ## 免责声明
 
