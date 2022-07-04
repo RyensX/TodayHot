@@ -10,6 +10,7 @@ import com.su.mediabox.pluginapi.data.TagData
 import com.su.mediabox.pluginapi.data.ViewPagerData
 import com.su.mediabox.pluginapi.util.UIUtil.dp
 import com.su.todayhot.plugin.apis
+import com.su.todayhot.plugin.been.Weibo
 
 class WeiboHotLoader : ViewPagerData.PageLoader {
     override fun pageName(page: Int): String = "微博热搜榜"
@@ -38,7 +39,7 @@ class WeiboHotLoader : ViewPagerData.PageLoader {
                 action = pageAction
             })
             //标签
-            data.add(getHotLabel(content.label_name).apply {
+            data.add(getHotLabel(content).apply {
                 spanSize = 2
                 if (this is TagData)
                     gravity = Gravity.CENTER
@@ -48,19 +49,12 @@ class WeiboHotLoader : ViewPagerData.PageLoader {
         return data
     }
 
-    private val hotColor = Color.parseColor("#FF9406")
-    private val newColor = Color.parseColor("#FF3852")
-    private val businessColor = Color.parseColor("#00B7EE")
-    private val boilColor = Color.parseColor("#F86400")
-
-    private fun getHotLabel(label: String?): BaseData =
-        when (label) {
-            "新" -> TagData(label, newColor)
-            "热" -> TagData(label, hotColor)
-            "商" -> TagData(label, businessColor)
-            "沸" -> TagData(label, boilColor)
-            else -> SimpleTextData("")
-        }
+    private fun getHotLabel(webRealtime: Weibo.Realtime): BaseData =
+        if (!webRealtime.label_name.isNullOrEmpty() && !webRealtime.icon_desc_color.isNullOrEmpty()) TagData(
+            webRealtime.label_name,
+            Color.parseColor(webRealtime.icon_desc_color)
+        )
+        else SimpleTextData("")
 
     private val topColor = Color.parseColor("#F26D5F")
     private val otherTopColor = Color.parseColor("#FF9A29")

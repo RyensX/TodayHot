@@ -26,7 +26,6 @@ data class Weibo(
     )
 
     data class Realtime(
-        val ad_info: String,
         val category: String,
         val channel_type: String,
         val emoticon: String,
@@ -39,7 +38,7 @@ data class Weibo(
         val is_fei: Int?,
         val is_hot: Int?,
         val is_new: Int?,
-        val label_name: String,
+        val label_name: String?,
         val mid: String,
         val note: String,
         val num: Int,
