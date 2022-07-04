@@ -28,12 +28,16 @@ class ZhiHuHotLoader : ViewPagerData.PageLoader {
                     fontSize = 22F
                     fontStyle = Typeface.BOLD
                     gravity = Gravity.CENTER_HORIZONTAL
+                    if (index == 0)
+                        paddingTop = 8.dp
                 })
                 //标题
                 add(SimpleTextData(item.target.title).apply {
                     spanSize = 5
                     fontColor = Color.BLACK
                     fontStyle = Typeface.BOLD
+                    if (index == 0)
+                        paddingTop = 8.dp
                     action = pageAction
                 })
                 //配图
@@ -45,15 +49,16 @@ class ZhiHuHotLoader : ViewPagerData.PageLoader {
                         coverHeight = 70.dp
                     ).apply {
                         spanSize = 2
+                        if (index == 0)
+                            paddingTop = 8.dp
                         action = pageAction
                     })
                 //热度
-                add(SimpleTextData("").apply {
-                    spanSize = 1
-                })
+                add(SimpleTextData("").apply { spanSize = 1 })
                 add(SimpleTextData(item.detail_text).apply {
                     spanSize = 7
                     fontSize = 13F
+                    fontStyle = 0
                     fontColor = hotTextColor
                 })
             }
