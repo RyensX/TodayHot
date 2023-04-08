@@ -5,6 +5,7 @@ import com.su.mediabox.pluginapi.data.BaseData
 import com.su.mediabox.pluginapi.data.ViewPagerData
 import com.su.todayhot.plugin.components.loader.BaiduHotLoader
 import com.su.todayhot.plugin.components.loader.WeiboHotLoader
+import com.su.todayhot.plugin.components.loader.WyHotLoader
 import com.su.todayhot.plugin.components.loader.ZhiHuHotLoader
 
 class HotPageComponent : ICustomPageDataComponent {
@@ -16,7 +17,14 @@ class HotPageComponent : ICustomPageDataComponent {
     override suspend fun getData(page: Int): List<BaseData>? =
         if (page == 1)
             listOf(
-                ViewPagerData(listOf(ZhiHuHotLoader(), BaiduHotLoader(), WeiboHotLoader())).apply {
+                ViewPagerData(
+                    listOf(
+                        ZhiHuHotLoader(),
+                        BaiduHotLoader(),
+                        WeiboHotLoader(),
+                        WyHotLoader()
+                    )
+                ).apply {
                     layoutConfig = BaseData.LayoutConfig(itemSpacing = 0)
                 })
         else null
